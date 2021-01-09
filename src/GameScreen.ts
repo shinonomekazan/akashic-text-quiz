@@ -3,10 +3,10 @@ import BottomPopup = require("./BottomPopup");
 import Button = require("./button/Button");
 import ImageTextButton = require("./button/ImageTextButton");
 import TextButton = require("./button/TextButton");
+import * as events from "./common/events";
 import turn = require("./enum/Turn");
 import GameCore = require("./GameCore");
 import Player = require("./Player");
-import * as events from "./common/events";
 
 class GameScreen extends g.E {
 
