@@ -3,6 +3,7 @@ import BottomPopup = require("./BottomPopup");
 import Button = require("./button/Button");
 import ImageTextButton = require("./button/ImageTextButton");
 import TextButton = require("./button/TextButton");
+import * as events from "./common/events";
 import turn = require("./enum/Turn");
 import GameCore = require("./GameCore");
 import Player = require("./Player");
@@ -79,6 +80,18 @@ class GameScreen extends g.E {
 			if (ev.data.message === "ClosePopup") {
 				if (ev.player.id === g.game.selfId)
 					this.closePopup();
+			}
+
+			if (ev.data.type === "text") {
+				const inputTextEvent = ev as events.InputTextEvent;
+				if (inputTextEvent.player.id === g.game.selfId) {
+					if (inputTextEvent.player.id === g.game.selfId && this.currentTurn === turn.answer && this.myAnswer === "") {
+						g.game.raiseEvent(new g.MessageEvent({
+							message: "Answer",
+							text: inputTextEvent.data.text
+						}));
+					}
+				}
 			}
 		});
 

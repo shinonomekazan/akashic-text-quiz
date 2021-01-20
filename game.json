@@ -85,6 +85,11 @@
 			"type": "script",
 			"path": "script/BottomPopup.js",
 			"global": true
+		},
+		"events": {
+			"type": "script",
+			"path": "script/common/events.js",
+			"global": true
 		}
 	},
 	"moduleMainScripts": {
